@@ -58,7 +58,14 @@ namespace _1DV402.S1.L03A
             else
             {
                 medianSalary = (sortedSalaries[middle] + sortedSalaries[middle - 1]) / 2d;
-            }            
+            }
+
+            // Print data in console            
+            Console.WriteLine("----------------------------------");
+            Console.WriteLine("Medianlön: {0, 19:c0}", medianSalary);
+            Console.WriteLine("Medellön: {0, 20:c0}", averageSalary);
+            Console.WriteLine("Lönespridning: {0, 15:c0}", spreadSalary);         
+            Console.WriteLine("----------------------------------");
         }
 
     }
