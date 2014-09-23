@@ -10,6 +10,18 @@ namespace _1DV402.S1.L03A
     {
         static void Main(string[] args)
         {
+            ReadInt("Ange antal löner att mata in: ");
+
         }
+
+        static int ReadInt(string prompt)
+        {
+            Console.Write(prompt);
+            int value = int.Parse(Console.ReadLine());
+            return value;
+        }
+
+
+
     }
 }
