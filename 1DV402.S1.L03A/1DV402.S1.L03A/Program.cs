@@ -26,7 +26,7 @@ namespace _1DV402.S1.L03A
                 }
                 // Display message at end of program
                 Console.BackgroundColor = ConsoleColor.DarkGreen;
-                Console.WriteLine("\n\nTryck på valfri tangent för att göra en ny uträkning. ESC avslutar.");
+                Console.WriteLine("\nTryck på valfri tangent för att göra en ny uträkning. ESC avslutar.\n");
                 Console.ResetColor();
             } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
 
@@ -112,7 +112,12 @@ namespace _1DV402.S1.L03A
                 {
                     Console.WriteLine();
                 }
+                if (i == salaries.Length - 1)
+                {
+                    Console.WriteLine();
+                }
             }
+            
 
 
         }
