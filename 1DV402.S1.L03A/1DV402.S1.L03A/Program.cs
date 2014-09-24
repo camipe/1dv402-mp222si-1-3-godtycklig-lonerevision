@@ -10,16 +10,51 @@ namespace _1DV402.S1.L03A
     {
         static void Main(string[] args)
         {
-            int numberOfSalaries = ReadInt("Ange antal löner att mata in: ");
+            do
+            {
+                int numberOfSalaries = ReadInt("Ange antal löner att mata in: ");
+                if (numberOfSalaries < 2)
+                {
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\nDu måste mata in minst två löner för att kunna göra en beräkning\n");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    ProcessSalaries(numberOfSalaries);
+                }
 
-            ProcessSalaries(numberOfSalaries);
+                Console.BackgroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine("\n\nTryck på valfri tangent för att göra en ny uträkning. ESC avslutar.");
+                Console.ResetColor();
+            } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
 
         }
 
         static int ReadInt(string prompt)
         {
-            Console.Write(prompt);
-            int value = int.Parse(Console.ReadLine());
+            int value;
+            while (true)
+            {
+                try
+                {
+                    Console.Write(prompt);
+                    value = int.Parse(Console.ReadLine());
+                    break;
+                }
+                catch (FormatException)
+                {
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\nFEL! Felaktigt belopp. Ange ett heltal!\n");
+                    Console.ResetColor();
+                }
+                catch (OverflowException)
+                {
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\nTalet är för stort, välj ett mindre tal.\n");
+                    Console.ResetColor();
+                }
+            }
             return value;
         }
 
@@ -28,7 +63,7 @@ namespace _1DV402.S1.L03A
             // Declaring variables
             int[] salaries = new int[count];
             int[] sortedSalaries = new int[count];
-            double averageSalary;            
+            double averageSalary;
             int spreadSalary;
             double medianSalary;
             int middle;
@@ -48,10 +83,10 @@ namespace _1DV402.S1.L03A
             // Creates a copy of salaries and sorts it in a min -> max order
             sortedSalaries = (int[])salaries.Clone();
             Array.Sort(sortedSalaries);
-            
+
             // Calculating the median value
-            middle = sortedSalaries.Length / 2; 
-            if ((sortedSalaries.Length % 2) != 0 )
+            middle = sortedSalaries.Length / 2;
+            if ((sortedSalaries.Length % 2) != 0)
             {
                 medianSalary = sortedSalaries[sortedSalaries.Length / 2];
             }
@@ -64,8 +99,19 @@ namespace _1DV402.S1.L03A
             Console.WriteLine("----------------------------------");
             Console.WriteLine("Medianlön: {0, 19:c0}", medianSalary);
             Console.WriteLine("Medellön: {0, 20:c0}", averageSalary);
-            Console.WriteLine("Lönespridning: {0, 15:c0}", spreadSalary);         
+            Console.WriteLine("Lönespridning: {0, 15:c0}", spreadSalary);
             Console.WriteLine("----------------------------------");
+
+            for (int i = 0; i < salaries.Length; i++)
+            {
+                Console.Write("{0, 8}", salaries[i]);
+                if ((i + 1) % 3 == 0)
+                {
+                    Console.WriteLine();
+                }
+            }
+
+
         }
 
     }
