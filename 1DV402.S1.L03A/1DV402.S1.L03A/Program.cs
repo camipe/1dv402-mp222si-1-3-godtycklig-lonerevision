@@ -10,6 +10,7 @@ namespace _1DV402.S1.L03A
     {
         static void Main(string[] args)
         {
+            // Code to be ran over and over until the user presses esc
             do
             {
                 int numberOfSalaries = ReadInt("Ange antal löner att mata in: ");
@@ -23,7 +24,7 @@ namespace _1DV402.S1.L03A
                 {
                     ProcessSalaries(numberOfSalaries);
                 }
-
+                // Display message at end of program
                 Console.BackgroundColor = ConsoleColor.DarkGreen;
                 Console.WriteLine("\n\nTryck på valfri tangent för att göra en ny uträkning. ESC avslutar.");
                 Console.ResetColor();
@@ -31,6 +32,7 @@ namespace _1DV402.S1.L03A
 
         }
 
+        // Method to recieve input from the user in the form of an integer
         static int ReadInt(string prompt)
         {
             int value;
@@ -58,6 +60,7 @@ namespace _1DV402.S1.L03A
             return value;
         }
 
+        // Method that process the salaries
         static void ProcessSalaries(int count)
         {
             // Declaring variables
