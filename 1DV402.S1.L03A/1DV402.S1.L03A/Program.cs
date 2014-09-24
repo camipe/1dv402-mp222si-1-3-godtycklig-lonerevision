@@ -47,7 +47,7 @@ namespace _1DV402.S1.L03A
                 catch (FormatException)
                 {
                     Console.BackgroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\nFEL! Felaktigt belopp. Ange ett heltal!\n");
+                    Console.WriteLine("\nFEL! Kan inte tolkas som ett heltal. Ange ett heltal!\n");
                     Console.ResetColor();
                 }
                 catch (OverflowException)
